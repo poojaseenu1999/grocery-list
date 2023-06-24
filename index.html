@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="index.css">
+
+    <title>Grocery-list-Javascript</title>
+</head>
+<body>
+    <section class="section">
+        <!-- form -->
+        <form class="grocery-form">
+            <p class="alert"></p>
+            <h3>Grocery list</h3>
+            <div class="form-control">
+                <input type="text" placeholder="things to do" class="input" />
+                <button type="submit" class="submit">Submit</button>
+            </div>
+        </form>
+        <!--item list-->
+        <div class="grocery-container">
+            <div class="grocery-list">
+                <p class="title">item</p>
+                <div class="btn-container">
+                    <button type="button" class="edit">
+                        <i class="fas fa-edit"></i>
+                        edit
+                    </button>
+                    <button type="button" class="delete">
+                        <i class="fa-sharp fa-solid fa-trash"></i>
+                        delete
+                    </button>
+                </div>
+            </div>
+
+            <!--clear button-->
+            <button type="button" class="clear">Clear Items</button>
+        </div>
+    </section>
+</body>
+</html>
