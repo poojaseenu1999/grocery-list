@@ -1,6 +1,6 @@
 let alert = document.querySelector('.alert');
 let form = document.querySelector('.grocery-form')
-let input = document.querySelector('input');
+let input = document.getElementById('input');
 let submit = document.querySelector('.submit');
 let container = document.querySelector('.grocery-container');
 let list = document.querySelector('.grocery-list');
@@ -46,6 +46,11 @@ function handlesubmit(e){
             </button>
         </div>
         `
+        let deleteBtn = element.querySelector('.delete');
+        deleteBtn.addEventListener('click',deleteItem);
+        let editBtn = element.querySelector('.edit');
+        editBtn.addEventListener('click',editItem);
+
 
         list.appendChild(element);
         displayAlert('item added to list', 'green');
@@ -55,13 +60,29 @@ function handlesubmit(e){
 
     }
     else if(value && editFlag) {
-        console.log('value edit')
-    }
+        editElements.innerHTML = value;
+        displayAlert('value changed', 'green');
+        submit.textContent = 'submit'
+        setBackToDefault();
+    } 
     else {
         displayAlert('empty string', 'red')
     }
 }
 
+
+
+function editItem(e){
+    let element = e.currentTarget.parentElement.parentElement;
+    let editElements = e.currentTarget.parentElement.previousElementSibling;
+    console.log('list elements',editElements.innerHTML)
+    input.value = editElements.innerHTML;
+    // editFlag = true;
+    // editId = element.dataset.id;
+    submit.textContent = 'Edit'
+    list.removeChild(element)
+
+}
 
 function displayAlert(text,action){
     alert.textContent = text;
@@ -82,6 +103,7 @@ function setBackToDefault(){
 function addtoLocalStorage(){
     console.log('add to storage')
 }
+function editLocalStorage(id,value){}
 
 // clear items we should all the items using classname added to article element.
 //if the length of the items is greater than 0, then loop thr the items and use the parent element(list) and remove its child.
@@ -95,3 +117,15 @@ function clearItems(){
     displayAlert('all items are removed', 'blue');
     setBackToDefault();
 }
+
+
+function deleteItem(e){
+    let element = e.currentTarget.parentElement.parentElement;
+    list.removeChild(element);
+    if(list.children.length === 0){
+        container.classList.remove('show-container')
+    }
+    displayAlert('item deleted', 'red');
+    setBackToDefault();
+}
+ 
